@@ -54,3 +54,11 @@ button {
 button:hover {
     background-color: #218838;
 }
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
