@@ -75,7 +75,7 @@ async function processLogin(event) {
             case 200:
                 const splitText = (await response.text()).split(' ');
                 sessionStorage.setItem("token", splitText[0]);
-                sessionStorage.setItem("isAdmin", splitText[1]);
+                sessionStorage.setItem("is-admin", splitText[1]);
                 location.assign("../recipe/recipe-page.html");
                 break;
             // If response status is 401
