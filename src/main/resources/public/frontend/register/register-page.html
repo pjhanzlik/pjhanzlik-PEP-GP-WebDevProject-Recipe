@@ -12,22 +12,35 @@
     <link rel="stylesheet" href="register-page.css">
 </head>
 <body>
+    <main>
+    <form method="post" action="http://localhost:8081/register">
+    <!-- Add a heading (h1) with text "Register" -->
+    <h1>Register Page</h1>
 
-    <!-- TODO: Add a heading (h1) with text "Register" -->
+    <!-- Add a label or paragraph for "Username" -->
+    <label for="username-input">Username</label>
+    <!-- Add an input element for username with id="username-input" -->
+    <input autocomplete="username" name="username" id="username-input" required />
 
-    <!-- TODO: Add a label or paragraph for "Username" -->
-    <!-- TODO: Add an input element for username with id="username-input" -->
+    <!-- Add a label or paragraph for "Email" -->
+    <label for="email-input">Email</label>
+    <!-- Add an input element for email with id="email-input" and type="email" -->
+    <input autocomplete="email" name="email" id="email-input" type="email" required />
 
-    <!-- TODO: Add a label or paragraph for "Email" -->
-    <!-- TODO: Add an input element for email with id="email-input" and type="email" -->
+    <!-- Add a label or paragraph for "Password" -->
+    <label for="password-input">Password</label>
+    <!-- Add an input element for password with id="password-input" and type="password" -->
+    <input autocomplete="new-password" name="password" id="password-input" type="password" required />
 
-    <!-- TODO: Add a label or paragraph for "Password" -->
-    <!-- TODO: Add an input element for password with id="password-input" and type="password" -->
+    <!-- Add a label or paragraph for "Repeat Password" -->
+    <label for="repeat-password-input">Repeat Password</label>
+    <!-- Add an input element for repeat password with id="repeat-password-input" and type="password" -->
+    <input autocomplete="new-password" id="repeat-password-input" type="password" required />
 
-    <!-- TODO: Add a label or paragraph for "Repeat Password" -->
-    <!-- TODO: Add an input element for repeat password with id="repeat-password-input" and type="password" -->
-
-    <!-- TODO: Add a register button with id="register-button" and text "Register" -->
+    <!-- Add a register button with id="register-button" and text "Register" -->
+    <button id="register-button">Register</button>
+    </form>
+    </main>
 
     <script src="register-page.js"></script>
 </body>
