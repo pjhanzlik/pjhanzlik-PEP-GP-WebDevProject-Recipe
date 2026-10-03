@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 22.5rem;
+    margin: auto;
+    gap: 0.25rem;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: inherit;
+}
+
+button {
+    padding: 10px;
+    background-color: #27a644;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
