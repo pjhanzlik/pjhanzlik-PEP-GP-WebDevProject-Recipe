@@ -74,7 +74,7 @@ async function processLogin(event) {
             // - Use window.location.href to redirect to the recipe page
             case 200:
                 const splitText = (await response.text()).split(' ');
-                sessionStorage.setItem("token", splitText[0]);
+                sessionStorage.setItem("auth-token", splitText[0]);
                 sessionStorage.setItem("is-admin", splitText[1]);
                 location.assign("../recipe/recipe-page.html");
                 break;

@@ -10,7 +10,7 @@ let recipes = [];
 /*
 * Show logout button if auth-token exists in sessionStorage
 */
-if (sessionStorage.getItem("token") != null) {
+if (sessionStorage.getItem("auth-token") != null) {
     document.getElementById("logout-button").hidden = null;
 }
 
@@ -134,7 +134,7 @@ async function processLogout() {
         cache: "no-cache",
         credentials: "same-origin",
         headers: {
-            "Authorization": `token: ${sessionStorage.getItem("token")}`,
+            "Authorization": `auth-token: ${sessionStorage.getItem("auth-token")}`,
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "*"
