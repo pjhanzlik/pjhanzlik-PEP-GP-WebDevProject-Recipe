@@ -2,7 +2,7 @@
  * This script defines the registration functionality for the Registration page in the Recipe Management Application.
  */
 
-const BASE_URL = "http://localhost:8081"; // backend URL
+// const BASE_URL = "http://localhost:8081"; // backend URL
 
 /* 
  * Ensure the register button calls processRegistration when clicked
