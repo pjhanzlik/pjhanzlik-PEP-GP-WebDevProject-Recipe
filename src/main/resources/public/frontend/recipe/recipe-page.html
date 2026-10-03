@@ -14,58 +14,87 @@
 </head>
 
 <body>
+    <nav>
+    <!-- Add a hidden link with id="admin-link" to navigate to the ingredients page (admin only) -->
+    <a id="admin-link" href="../ingredients/ingredient-page.html" hidden>Admin access to ingredients page</a>
 
-    <!-- TODO: Add a hidden link with id="admin-link" to navigate to the ingredients page (admin only) -->
-
-    <!-- TODO: Add a hidden Logout button with id="logout-button" -->
-
+    <!-- Add a hidden Logout button with id="logout-button" -->
+    <button id="logout-button" hidden>Logout</button>
+    </nav>
+    <main>
     <!-- TODO: Add an h1 heading for the Recipe Management section -->
+    <h1>Recipes</h1>
 
 
     <!-- 🔍 Search a Recipe -->
     <!-- 
-        TODO: 
         - Create an h2 with text "Search a Recipe"
         - Add input with id="search-input"
         - Add button with id="search-button" and text "Search"
     -->
+    <form>
+    <h2>Search a Recipe</h2>
+    <label for="search-input">Name</label>
+    <input id="search-input" type="search" required />
+    <button id="search-button">Search</button>
+    </form>
 
 
     <!-- 📋 Recipe List -->
-    <!-- 
-        TODO: 
+    <!--
         - Create a <ul> to hold all recipes
         - Give it id="recipe-list"
     -->
+    <ul id="recipe-list"></ul>
 
 
     <!-- ➕ Add a Recipe -->
-    <!-- 
-        TODO: 
+    <!--
         - h2 with "Add a Recipe"
         - Input for recipe name (id="add-recipe-name-input")
         - Textarea for instructions (id="add-recipe-instructions-input")
         - Button to submit (id="add-recipe-submit-input") with text "Add Recipe"
     -->
+    <form>
+    <h2>Add a Recipe</h2>
+    <label for="add-recipe-name-input">Name</label>
+    <input id="add-recipe-name-input" required />
+    <label for="add-recipe-instructions-input">Instructions</label>
+    <textarea id="add-recipe-instructions-input"></textarea>
+    <button id="add-recipe-submit-input">Add Recipe</button>
+    </form>
 
 
     <!-- ✏️ Update a Recipe -->
     <!-- 
-        TODO:
         - h2 with "Update a Recipe"
         - Input for recipe name (id="update-recipe-name-input")
         - Textarea for updated instructions (id="update-recipe-instructions-input")
         - Button (id="update-recipe-submit-input") with text "Update Recipe"
     -->
+    <form>
+    <h2>Update a Recipe</h2>
+    <label for="update-recipe-name-input">Name</label>
+    <input id="update-recipe-name-input" required />
+    <label for="update-recipe-instructions-input">Instructions</label>
+    <textarea id="update-recipe-instructions-input"></textarea>
+    <button id="update-recipe-submit-input">Update Recipe</button>
+    </form>
 
 
     <!-- ❌ Delete a Recipe -->
     <!-- 
-        TODO:
         - h2 with "Delete a Recipe"
         - Input with id="delete-recipe-name-input"
         - Button with id="delete-recipe-submit-input" and text "Delete Recipe"
     -->
+    <form>
+    <h2>Delete a Recipe</h2>
+    <label for="delete-recipe-name-input">Name</label>
+    <input id="delete-recipe-name-input" required />
+    <button id="delete-recipe-submit-input">Delete Recipe</button>
+    </form>
+    </main>
 
     <script src="recipe-page.js"></script>
 </body>
