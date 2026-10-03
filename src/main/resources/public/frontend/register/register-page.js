@@ -77,7 +77,7 @@ async function processRegistration(event) {
         const response = await fetch(event.target.action, requestOptions);
         switch (response.status) {
             case 201:
-                return location = "../login-page.html";
+                return location = "../login/login-page.html";
             case 409:
                 return alert("Username or email already exists. Please try again.");
             default:
