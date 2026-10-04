@@ -166,7 +166,9 @@ async function deleteRecipe() {
         getRecipes();
     } else {
         console.error(response);
-        alert(await response.text());
+        if (response.status === 401) {
+            alert("Not authorized to DELETE recipes.  Likely this is a CORS issue that requires server configuration to fix.");
+        }
         throw new Error("Delete recipe response not okay.")
     }
 }
