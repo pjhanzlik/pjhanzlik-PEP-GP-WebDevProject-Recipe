@@ -3,40 +3,43 @@
  */
 
 const BASE_URL = "http://localhost:8081"; // backend URL
-
+const INGREDIENT_URL = `${BASE_URL}/ingredients`;
 /* 
- * Get references to various DOM elements
+ * TODO: Get references to various DOM elements
  * - addIngredientNameInput
  * - deleteIngredientNameInput
  * - ingredientListContainer
  * - searchInput (optional for future use)
  * - adminLink (if visible conditionally)
  */
-const addIngredientNameInput = document.getElementById("add-ingredient-name-input");
-const deleteIngredientNameInput = document.getElementById("delete-ingredient-name-input");
-const ingredientListContainer = document.getElementById("ingredient-list");
-const searchInput = document.getElementById("search-input");
-const adminLink = document.getElementById("admin-link");
 
 /* 
  * Attach 'onclick' events to:
  * - "add-ingredient-submit-button" → addIngredient()
  * - "delete-ingredient-submit-button" → deleteIngredient()
  */
-document.getElementById("add-ingredient-submit-button").addEventListener("click", addIngredient);
-document.getElementById("delete-ingredient-submit-button").addEventListener("click", deleteIngredient);
-
-/*
- * TODO: Create an array to keep track of ingredients
- */
+document.addEventListener("submit", event => {
+    const nameInput = event.target.elements.name;
+    switch (event.target.id) {
+        case "add-ingredient-form":
+            event.preventDefault();
+            addIngredient(nameInput);
+            break;
+        case "delete-ingredient-form":
+            event.preventDefault();
+            deleteIngredient(nameInput);
+            break;
+    }
+});
 
 /* 
- * TODO: On page load, call getIngredients()
+ * On page load, call getIngredients()
  */
+getIngredients();
 
 
 /**
- * TODO: Add Ingredient Function
+ * Add Ingredient Function
  * 
  * Requirements:
  * - Read and trim value from addIngredientNameInput
@@ -46,30 +49,60 @@ document.getElementById("delete-ingredient-submit-button").addEventListener("cli
  * - On success: clear input, call getIngredients() and refreshIngredientList()
  * - On failure: alert the user
  */
-async function addIngredient() {
-    const name = addIngredientNameInput.value.trim();
-    if (name == "") {
-        alert("Add ingredient field must not be empty")
+document.addEventListener("change", event => event.target.value = event.target.value.trim());
+async function addIngredient(nameInput) {
+    const name = nameInput.value;
+    try {
+        const response = await fetch(
+            INGREDIENT_URL,
+            {
+                method: "POST",
+                headers: {
+                    "Authorization": `auth-token: ${sessionStorage.getItem("auth-token")}`
+                },
+                body: JSON.stringify({ name })
+            }
+        );
+        if (response.ok) {
+            nameInput.value = "";
+            getIngredients();
+        } else {
+            throw new Error(`Response status code ${response.status} when adding ingredient.  Please try again.`);
+        }
+    } catch (error) {
+        alert(error);
     }
 }
 
 
 /**
- * TODO: Get Ingredients Function
+ * Get Ingredients Function
  * 
  * Requirements:
  * - Fetch all ingredients from backend
- * - Store result in `ingredients` array
+ * - Store result in `ingredients` array (decided to use ingredient list html element instead)
  * - Call refreshIngredientList() to display them
  * - On error: alert the user
  */
 async function getIngredients() {
-    // Implement get ingredients logic here
+    const ingredientList = document.getElementById("ingredient-list");
+    try {
+        const response = await fetch(INGREDIENT_URL);
+        if (response.ok) {
+            return refreshIngredientList(await response.json());
+        }
+        if (response.status === 404) {
+            return refreshIngredientList([]);
+        }
+        throw new Error(`Unexpected response status ${response.status}`);
+    } catch (error) {
+        alert(error);
+    }
 }
 
 
 /**
- * TODO: Delete Ingredient Function
+ * Delete Ingredient Function
  * 
  * Requirements:
  * - Read and trim value from deleteIngredientNameInput
@@ -79,13 +112,35 @@ async function getIngredients() {
  * - On success: call getIngredients() and refreshIngredientList(), clear input
  * - On failure or not found: alert the user
  */
-async function deleteIngredient() {
-    // Implement delete ingredient logic here
+async function deleteIngredient(nameInput) {
+    const ingredientList = document.getElementById("ingredient-list");
+    const ingredientItem = [...ingredientList.children]
+        .find(element => element.dataset.name === nameInput.value);
+    if (ingredientItem === undefined) {
+        return alert("Ingredient not found to delete. Please try again.");
+    }
+    const id = ingredientItem.dataset.id;
+    const url = `${INGREDIENT_URL}/${id}`;
+    const requestInit = { method: "DELETE" };
+    try {
+        const response = await fetch(url, requestInit);
+        if (response.ok) {
+            nameInput.value = "";
+            ingredientItem.remove();
+        } else if (response.status === 401) {
+            alert("Delete was not authorized. This is likely a CORS issue you cannot resolve.");
+        } else {
+            alert(await response.text());
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Delete network request error occurred. Please try again.");
+    }
 }
 
 
 /**
- * TODO: Refresh Ingredient List Function
+ * Refresh Ingredient List Function
  * 
  * Requirements:
  * - Clear ingredientListContainer
@@ -94,6 +149,13 @@ async function deleteIngredient() {
  *   - Create <li> and inner <p> with ingredient name
  *   - Append to container
  */
-function refreshIngredientList() {
-    // Implement ingredient list rendering logic here
+function refreshIngredientList(ingredients) {
+    const ingredientList = document.getElementById("ingredient-list");
+    ingredientList.replaceChildren(...ingredients.map(ingredient => {
+        const li = document.createElement("li");
+        li.textContent = ingredient.name;
+        li.dataset.name = ingredient.name;
+        li.dataset.id = ingredient.id;
+        return li;
+    }));
 }
