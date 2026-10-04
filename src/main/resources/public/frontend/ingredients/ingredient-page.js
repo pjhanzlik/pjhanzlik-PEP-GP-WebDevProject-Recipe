@@ -5,19 +5,26 @@
 const BASE_URL = "http://localhost:8081"; // backend URL
 
 /* 
- * TODO: Get references to various DOM elements
+ * Get references to various DOM elements
  * - addIngredientNameInput
  * - deleteIngredientNameInput
  * - ingredientListContainer
  * - searchInput (optional for future use)
  * - adminLink (if visible conditionally)
  */
+const addIngredientNameInput = document.getElementById("add-ingredient-name-input");
+const deleteIngredientNameInput = document.getElementById("delete-ingredient-name-input");
+const ingredientListContainer = document.getElementById("ingredient-list");
+const searchInput = document.getElementById("search-input");
+const adminLink = document.getElementById("admin-link");
 
 /* 
- * TODO: Attach 'onclick' events to:
+ * Attach 'onclick' events to:
  * - "add-ingredient-submit-button" → addIngredient()
  * - "delete-ingredient-submit-button" → deleteIngredient()
  */
+document.getElementById("add-ingredient-submit-button").addEventListener("click", addIngredient);
+document.getElementById("delete-ingredient-submit-button").addEventListener("click", deleteIngredient);
 
 /*
  * TODO: Create an array to keep track of ingredients
@@ -40,7 +47,10 @@ const BASE_URL = "http://localhost:8081"; // backend URL
  * - On failure: alert the user
  */
 async function addIngredient() {
-    // Implement add ingredient logic here
+    const name = addIngredientNameInput.value.trim();
+    if (name == "") {
+        alert("Add ingredient field must not be empty")
+    }
 }
 
 
