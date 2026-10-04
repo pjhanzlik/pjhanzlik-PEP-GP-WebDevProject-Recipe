@@ -1,14 +1,64 @@
-@import "../styles.css";
-/**
- * This file contains styles for the login-page.html file.
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1.2rem;
+    margin: 32px;
+}
 
- * It should define the visual appearance of the login form and other related elements.
+h1 {
+    text-align: center;
+}
 
- * TODO (OPTIONAL): Not mandatory to modify the file and is optional
- * - Customize margins and padding for specific elements to improve spacing.
- * - Add hover effects or transitions for interactive elements (e.g., buttons, links).
- * - Refine input and textarea styling for better responsiveness and accessibility.
- * - Define additional styles for error messages or validation feedback if required.
+h1, h2 {
+    margin: unset;
+}
 
- */
+main {
+    display: grid;
+    gap: 3rem;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 40rem);
+}
+
+form {
+    display: flex;
+    background-color: #eee;
+    padding: 16px 16px 32px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+input, textarea {
+    padding: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: inherit;
+}
+
+textarea {
+    min-height: 8em;
+}
+
+button {
+    padding: 10px;
+    background-color: #27a644;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
 
