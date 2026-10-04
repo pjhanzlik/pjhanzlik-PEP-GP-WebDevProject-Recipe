@@ -8,6 +8,33 @@ h1 {
     text-align: center;
 }
 
+ul {
+    margin: unset;
+    padding: unset;
+    list-style-type: none;
+}
+
+
+nav {
+    display: flex;
+    justify-content: end;
+    max-width: 40rem;
+    margin: 0.5rem auto;
+}
+
+nav > a {
+    margin-inline-end: auto;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+article {
+    display: grid;
+    gap: 0.75rem;
+}
+
 h1, h2 {
     margin: unset;
 }
@@ -26,6 +53,10 @@ form {
     border-radius: 8px;
     flex-direction: column;
     gap: 0.25rem;
+}
+
+strong {
+    display: block;
 }
 
 input, textarea {

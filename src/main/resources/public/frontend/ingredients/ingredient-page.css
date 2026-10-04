@@ -8,6 +8,25 @@ h1 {
     text-align: center;
 }
 
+ul {
+    margin: unset;
+    padding: unset;
+    list-style-position: inside;
+    list-style-type: square;
+}
+
+nav {
+    display: flex;
+    justify-content: end;
+    max-width: 40rem;
+    margin: 0.5rem auto;
+}
+
+article {
+    display: grid;
+    gap: 0.75rem;
+}
+
 h1, h2 {
     margin: unset;
 }

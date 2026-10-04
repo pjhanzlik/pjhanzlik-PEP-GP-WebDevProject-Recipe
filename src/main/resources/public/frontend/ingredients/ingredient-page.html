@@ -8,18 +8,22 @@
 </head>
 <body>
 
-    <!-- Create a link back to the recipe page with an id of "back-link" -->
-    <a href="../recipe/recipe-page.html" id="back-link">Back to Recipes</a>
-
+    <nav>
+        <!-- Create a link back to the recipe page with an id of "back-link" -->
+        <a href="../recipe/recipe-page.html" id="back-link">Back to Recipes</a>
+    </nav>
+    <main>
     <!-- Create a heading for the page -->
     <h1>Ingredients</h1>
 
+    <article>
     <!-- Create a section to display the list of ingredients -->
     <!-- - Include an h2 titled "Ingredients" -->
     <h2>Ingredient List</h2>
     <!-- - Include a <ul> with id "ingredient-list" -->
     <ul id="ingredient-list">
     </ul>
+    </article>
 
     <form id="add-ingredient-form">
     <!-- Create a section to add a new ingredient -->
@@ -42,6 +46,7 @@
     <!-- - Include a button with id "delete-ingredient-submit-button" -->
     <button id="delete-ingredient-submit-button">Delete Ingredient</button>
     </form>
+    </main>
 
     <script src="ingredient-page.js"></script>
 </body>

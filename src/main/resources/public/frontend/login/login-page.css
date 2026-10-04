@@ -8,6 +8,17 @@ h1 {
     text-align: center;
 }
 
+ul {
+    margin: unset;
+    list-style-position: inside;
+    padding: unset;
+}
+
+article {
+    display: grid;
+    gap: 0.5rem;
+}
+
 h1, h2 {
     margin: unset;
 }
@@ -62,3 +73,7 @@ nav {
     gap: 2rem;
 }
 
+aside {
+    text-align: center;
+    margin: 1rem;
+}
